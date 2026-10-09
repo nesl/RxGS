@@ -1,0 +1,56 @@
+exp_name: "multirx_main"
+random_seed: 8371
+
+model:
+  dataset: "spectrum_multirx"
+  frequency: 2400000000.0
+  fle_degree: 9
+  data_device: "cuda:0"
+
+  ratio_train: 0.8
+
+  gene_init_point: true
+  camera_scale: 2.0
+  voxel_size_scale: 1.5
+  max_init_points: 50000
+
+  _fle_init_scale: 0.1
+  _fle_degree_ramp: 500
+
+geo_iterations: 30000
+geo_rx: 0
+film_iterations: 60000
+
+optimization:
+  position_lr_init: 0.00016
+  position_lr_final: 1.6e-06
+  position_lr_delay_mult: 0.01
+  feature_lr: 0.005
+  opacity_lr: 0.01
+  scaling_lr: 0.005
+  rotation_lr: 0.001
+
+  lambda_dssim: 0.0
+  lambda_dfourier: 0.0
+  _rest_lr_ratio: 0.2
+
+  percent_dense: 0.02
+  densification_interval: 100
+  opacity_reset_interval: 3000
+  densify_from_iter: 500
+  densify_grad_threshold: 0.0002
+  min_attenuation_threshold: 0.004
+  raddi_size_threshold: 10
+
+pipeline:
+  debug: false
+  radius_rx: 1.0
+
+rx_conditioning:
+  d_model: 64
+  n_freqs: 6
+  max_freq_log2: 5.0
+  comp_dim: 16
+  n_probe_samples: 16
+  grid_resolution: 128
+  lr: 0.001

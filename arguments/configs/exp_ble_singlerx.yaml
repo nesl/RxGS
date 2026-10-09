@@ -1,0 +1,48 @@
+exp_name: "singlerx_main"
+random_seed: 8371
+
+model:
+  dataset: "ble_rssi"
+  frequency: 2.4e9
+  fle_degree: 9
+  data_device: "cuda:0"
+  n_azimuth: 360
+  n_elevation: 90
+
+  ratio_train: 0.8
+
+  gene_init_point: true
+  init_ply_name: "points3D_singlerx.ply"
+  camera_scale: 1.071
+  voxel_size_scale: 1.710
+  max_init_points: 50000
+
+  _fle_init_scale: 0.02888
+  _fle_degree_ramp: 500
+
+iterations: 10000
+
+optimization:
+  position_lr_init: 5.047e-05
+  position_lr_final: 2.06e-06
+  position_lr_delay_mult: 0.008613
+  feature_lr: 0.001136
+  opacity_lr: 0.03785
+  scaling_lr: 0.002901
+  rotation_lr: 0.000502
+
+  lambda_dssim: 0.0
+  lambda_dfourier: 0.0
+  _rest_lr_ratio: 0.1641
+
+  percent_dense: 0.005945
+  densification_interval: 100
+  opacity_reset_interval: 4000
+  densify_from_iter: 600
+  densify_grad_threshold: 0.0001973
+  min_attenuation_threshold: 0.003789
+  raddi_size_threshold: 16.91
+
+pipeline:
+  debug: false
+  radius_rx: 4.219
